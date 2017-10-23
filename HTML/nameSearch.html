@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NameSearch</title>
+	<link rel="stylesheet" type="text/css" href="CSS/command.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="JS/functions.js"></script>
+</head>
+<body>
+	<div id="main">
+		<pre></pre>
+		<input type="text" placeholder="Enter first name" onkeydown="submit(this, getRoll)"/>
+	</div>
+	<div id="buttons">
+		<button id="clear">Clear</button>
+		<a href="/index"><button id="back">Back</button></a>
+	</div>
+
+	<script type="text/javascript">
+		$('#clear').click(function(){
+			$('pre').text('')
+		});
+	</script>
+</body>
+</html>

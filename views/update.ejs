@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Update student</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+    h1 {
+      position: absolute;
+      top: 16%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      font-family: "Trebuchet MS", sans serif;
+    }
+
+    form {
+      position: absolute;
+      top: 30%;
+      align-items: center;
+      outline: 1px solid gray;
+      padding: 4px;
+      padding-bottom: 0px;
+      padding-right: 0px;
+    }
+
+    div {
+      margin: 10px;
+    }
+
+    input {
+      display: block;
+      margin: 5px;
+    }
+
+    [type=checkbox] {
+      display: inline;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    button {
+      margin-right: 8px;
+      margin-top: 11px;
+    }
+
+    h3 {
+      position: absolute;
+      top: 60%;
+    }
+
+    [name=house], [name=transport] {
+      display: inline-block;
+    }
+
+    #house, #transport {
+      display: none;
+    }
+    select {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Update Student info.</h1>
+  <form action="/update" method="post">
+    <div>
+      <label for="name">Who's data to update?</label>
+      <input type="text" name="name" required>
+    </div>
+    <div id="options">
+      <label for="what">Which Setting(s) to change?</label><br>
+      <input type="checkbox" name="what" value="roll">Roll<br>
+      <input class="hidden" type="number" name="roll" required>
+
+      <input type="checkbox" name="what" value="house">House<br>
+      <div id="house">
+        <input type="radio" name="house" value="peace" required>Peace <br>
+        <input type="radio" name="house" value="harmony">Harmony <br>
+        <input type="radio" name="house" value="unity">Unity <br>
+        <input type="radio" name="house" value="faternity">Faternity <br>
+      </div>
+      <input type="checkbox" name="what" value="transport">Transport<br>
+      <div id="transport">
+        <input type="radio" name="transport" value="walker" required>Waker
+        <input type="radio" name="transport" value="bus">Bus
+        <select name="busRoute" required>
+          <option value="none" name="busRoute">None</option>
+          <option value="01" name="busRoute">01</option>
+          <option value="02" name="busRoute">02</option>
+          <option value="03" name="busRoute">03</option>
+          <option value="04" name="busRoute">04</option>
+          <option value="05" name="busRoute">05</option>
+          <option value="06" name="busRoute">06</option>
+        </select>
+      </div>
+
+      <button type="submit">UPDATE</button>
+      <a href="/class"><button type="button">CLASS</button></a>
+      <a href="/index"><button type="button">BACK</button></a>
+    </div>
+  </form>
+
+  <% if(msg != 'nothing'){ %>
+    <h3><%= msg %></h3>
+    <% } %>
+
+      <script type="text/javascript">
+        setTimeout(function() {
+          $('h3').css('display', 'none');
+        }, 1500);
+
+        $('#options').click(function() {
+          if ($('input[value=roll]').is(':checked')) {
+            $('input[name=roll]').css('display', 'block');
+            $('input[name=roll]').prop('disabled', false);
+          } else if ($('input[value=roll]').is(':checked') == false) {
+            $("input[name=roll]").css('display', 'none');
+            $("input[name=roll]").val('');
+            $('input[name=roll]').prop('disabled', true);
+          }
+          if ($('input[value=house]').is(':checked')) {
+            $('#house').css('display', 'block');
+            $('input[name=house]').attr('enabled', 'enabled');
+          } else if ($('input[value=house]').is(':checked') == false) {
+            $("#house").css('display', 'none');
+            $("input[name=house]").each(function() {
+              $(this).prop('checked', false)
+            })
+            $('input[name=house]').attr('disabled', 'disabled');
+          }
+          if ($('input[value=transport]').is(':checked')) {
+            $('#transport').css('display', 'block');
+            $('input[name=transport]').prop('disabled', false);
+
+            if ($('input[value=bus]').is(':checked')) {
+              $('select').css('display', 'inline-block');
+              $('option[value=none]').attr('disabled', 'disabled');
+            }
+            if ($('input[value=walker]').is(':checked')) {
+              $('option[value=none]').prop('disabled', false);
+              $('option[value=none]').prop('selected', true);
+              $('select').css('display', 'none');
+            }
+          } else if ($('input[value=transport]').is(':checked') == false) {
+            $("#transport").css('display', 'none');
+            $('input[name=transport]').prop('disabled', true);
+            $("input[name=transport]").each(function() {
+              $(this).prop('checked', false)
+            })
+          }
+        });
+      </script>
+</body>
+
+</html>

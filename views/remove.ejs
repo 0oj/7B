@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Remove Student</title>
+  <style>
+    h1 {
+      position: absolute;
+      top: 16%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      font-family: "Trebuchet MS", sans serif;
+    }
+
+    form {
+      position: absolute;
+      top: 30%;
+      align-items: center;
+      outline: 1px solid gray;
+      padding: 4px;
+    }
+
+    input {
+      display: block;
+      margin: 5px;
+    }
+
+    h3 {
+      position: absolute;
+      top: 100%;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 5px;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <h1>Remove Student</h1>
+  <form method="post" action="/remove">
+    <label for="name">Who to remove?</label>
+    <input name="name" type="text" required>
+
+    <button type="submit">REMOVE</button>
+    <a href="/class"><button type="button">CLASS</button></a>
+    <a href="/index"><button type="button">BACK</button></a>
+    </from>
+
+    <% if(msg != 'nothing'){ %>
+      <h3><%= msg %></h3>
+      <% } %>
+      
+        <script>
+          setTimeout(function() {
+            $('h3').css('display', 'none');
+          }, 1500);
+        </script>
+</body>
+
+</html>

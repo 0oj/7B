@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Class list</title>
+    <style>
+      body{
+      	display: flex;
+      	justify-content: center;
+      	font-family: "Trebuchet MS", sans serif;
+        font-size: 17px;
+      }
+      table{
+        position: absolute;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th, td{
+        padding: 5px;
+      }
+      caption{
+        font-size: 22px;
+      }
+      #buttons{
+        position: fixed;
+        left: 67%;
+        top: 20%;
+        font-size: 14px;
+      }
+      button{
+        display: block;
+        margin-bottom: 6px;
+        width: 70px;
+        height: 25px;
+      }
+      a{
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>Class 7B</caption>
+      <tr>
+        <th>Roll No.</th>
+        <th>Name</th>
+        <th>House</th>
+        <th>Transport</th>
+      </tr>
+      <%
+      String.prototype.capFirst = function() {
+          return this.charAt(0).toUpperCase() + this.slice(1);
+      }
+
+      for(let i = 0; i <= students.length-1; i++){%>
+        <tr>
+          <td><%= i+1%></td>
+          <td><%= students[i].capFirst()%></td>
+          <td><%= houses[i].capFirst()%></td>
+          <td><%= transports[i].capFirst()%></td>
+        </tr>
+      <%}%>
+    </table>
+    <div id="buttons">
+      <a href="/index"><button>HOME</button></a>
+      <a href="/add"><button>ADD</button></a>
+      <a href="/remove"><button>REMOVE</button></a>
+      <a href="/update"><button>UPDATE</button></a>
+    </div>
+  </body>
+</html>

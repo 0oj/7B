@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Add student</title>
+  <style>
+    h1 {
+      position: absolute;
+      top: 16%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      font-family: "Trebuchet MS", sans serif;
+    }
+
+    form {
+      position: absolute;
+      top: 30%;
+      align-items: center;
+      outline: 1px solid gray;
+      padding: 8px;
+      padding-top: 0px;
+      padding-bottom: 10px;
+      padding-right: 0px;
+    }
+
+    input {
+      display: block;
+    }
+
+    [name=house],
+    [name=transport] {
+      display: inline-block;
+    }
+
+    div {
+      margin: 10px;
+      margin-left: 2px;
+    }
+
+    select {
+      display: none;
+    }
+
+    h3 {
+      position: absolute;
+      top: 80%;
+    }
+
+    button {
+      margin-right: 8px;
+    }
+
+    [href=/class] {
+      margin-right: 0px;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <h1>Add Student</h1>
+  <form action="/add" method="POST">
+    <div>
+      <label for="name">Name?</label>
+      <input type="text" name="name" required>
+    </div>
+    <div>
+      <label for="roll">Which RollNo.?</label>
+      <input type="number" name="roll" required>
+    </div>
+    <div>
+      <label for="house">Which house?</label><br>
+      <input type="radio" name="house" value="peace" required>Peace <br>
+      <input type="radio" name="house" value="harmony">Harmony <br>
+      <input type="radio" name="house" value="unity">Unity <br>
+      <input type="radio" name="house" value="faternity">Faternity <br>
+    </div>
+    <div>
+      <label for="transport">Which transport?</label><br>
+      <input type="radio" name="transport" value="walker" required>Waker
+      <input type="radio" name="transport" value="bus">Bus
+      <select name="busRoute" required>
+        <option value="none" name="busRoute">None</option>
+        <option value="01" name="busRoute">01</option>
+        <option value="02" name="busRoute">02</option>
+        <option value="03" name="busRoute">03</option>
+        <option value="04" name="busRoute">04</option>
+        <option value="05" name="busRoute">05</option>
+        <option value="06" name="busRoute">06</option>
+      </select>
+    </div>
+    <button type="submit">ADD</button>
+    <a href="/class"><button type="button">CLASS</button></a>
+    <a href="/index"><button type="button">BACK</button></a>
+  </form>
+
+  <% if(msg != 'nothing'){ %>
+    <h3><%= msg %></h3>
+    <% } %>
+
+      <script>
+        setTimeout(function() {
+          $('h3').css('display', 'none');
+        }, 1500);
+        
+        $('input[name=transport]').click(function() {
+          if ($('input[value=bus]').is(':checked')) {
+            $('option[value=01]').attr('selected', 'selected');
+            $('select').css('display', 'inline-block');
+            $('option[value=none]').attr('disabled', 'disabled');
+          }
+          if ($('input[value=walker]').is(':checked')) {
+            $('option[value=none]').attr('enabled', 'enabled');
+            $('option[value=none]').attr('selected', 'selected');
+            $('select').css('display', 'none');
+          }
+        });
+      </script>
+</body>
+
+</html>

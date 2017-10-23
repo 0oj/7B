@@ -1,0 +1,40 @@
+body{
+	display: flex;
+	justify-content: center;
+	font-family: "Trebuchet MS", sans serif;
+}
+#main{
+	position: absolute;
+	top: 20%;
+	outline: 1px solid black;
+}
+pre{
+	height: 275px;
+	outline: 1px solid gray;
+	margin: 2px;
+	padding: 2px;
+	font-size: 20px;
+	width: 259px;
+	overflow-y: scroll;
+}
+input{
+	margin: 1px;
+	height: 23px;
+	width: 261px;
+	font-size: 15px;
+}
+#buttons{
+	position: relative;
+	top: 437px;
+	width: 269px;
+}
+#back{
+	position: relative;
+	left: 164px;
+}
+button{
+	font-size: 15px;
+	width: 50px;
+	height: 25px;
+	text-align: center;
+}
